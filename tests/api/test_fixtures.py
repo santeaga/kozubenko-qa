@@ -16,14 +16,20 @@ class User:
         self.second_name = ""
 
 
-def test_change_name():
+@pytest.fixture
+def user():
     user = User()
     user.create()
 
+    yield user
+
+    user.remove()
+
+def test_change_name(user):
     assert user.name == 'Dmytro'
 
 
-def test_change_second_name():
-    user = User()
-    user.create()
+def test_change_second_name(user):
     assert user.second_name == 'Kozubenko'
+
+
