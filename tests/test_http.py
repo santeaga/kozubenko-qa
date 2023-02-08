@@ -5,7 +5,7 @@ import requests
 @pytest.mark.http
 def test_first_request():
     r = requests.get('https://api.github.com/zen')
-    print(r.text)
+    print(f"Response from server is '{r.text}'")
 
 @pytest.mark.http
 def test_second_request():
@@ -23,6 +23,6 @@ def test_second_request():
 
 @pytest.mark.http
 def test_status_code_request():
-    r = requests.get('https://api.github.com/users/dmytro_kozubenko')
+    r = requests.get('https://api.github.com/users/sergii_butenko')
     
     assert r.status_code == 404
